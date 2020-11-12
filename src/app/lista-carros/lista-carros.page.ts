@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Carro } from 'src/models/Carro';
 
 @Component({
   selector: 'app-lista-carros',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaCarrosPage implements OnInit {
 
-  constructor() { }
+  public carros: Carro[] = new Array<Carro>()
+
+  constructor(
+    private _route: Router
+  ) { }
 
   ngOnInit() {
   }
+
+cadastrarCarro(){
+  this._route.navigate(['/cadastrar-carro'])
+}
 
 }

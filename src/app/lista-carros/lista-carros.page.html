@@ -9,4 +9,27 @@
 
 <ion-content>
 
+  <ion-grid>
+
+    <ion-row *ngIf='carros.length > 0'>
+
+      <ion-col>
+        <h1>Teste</h1>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row *ngIf='carros.length == 0'>
+
+      <ion-col>
+        <h4>Você ainda não tem carros cadastrados.</h4>
+        <!-- Botão mais interessante, mas vou seguir o da aula -->
+        <!-- <ion-fab-button color='danger'> <ion-icon name="add" ></ion-icon>  </ion-fab-button> -->
+        <ion-button expand="full" color='danger' (click) = 'cadastrarCarro()'>Cadastrar Carro</ion-button>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
 </ion-content>
