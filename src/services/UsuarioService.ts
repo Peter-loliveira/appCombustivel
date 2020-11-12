@@ -14,6 +14,7 @@ export class UsuarioService implements IUsuarioService {
     constructor (private _httpClient: HttpClient) {
        
     }
+    
     cadastrar(usuario: Usuario): Observable<Usuario> {
         // valores falsos: 0, null, undefined, ""
         if (!usuario.nome) throw new Error('O campo Nome é obrigatório.');
@@ -22,14 +23,18 @@ export class UsuarioService implements IUsuarioService {
         if (usuario.senha != usuario.confirmarSenha) throw new Error('As senhas não coincidem.');
         throw new Error("Já pode salvar.");
     }
+
     atualizar(usuario: Usuario): Observable<Usuario> {
         throw new Error("Method not implemented.");
     }
+
     logar(usuario: Usuario): void {
-        throw new Error("Method not implemented.");
+        localStorage.setItem( 'usuarioLogado', JSON.stringify( usuario ) )
     }
+
     retornarUsuarioLogado(): Usuario {
-        throw new Error("Method not implemented.");
+        let usuario: Usuario = JSON.parse(localStorage.getItem('usuarioLogado'))
+        return usuario
     }
 
 }
