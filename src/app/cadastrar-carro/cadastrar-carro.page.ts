@@ -1,3 +1,5 @@
+import { CarroService } from 'src/services/CarroService';
+import { Carro } from 'src/models/Carro';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarCarroPage implements OnInit {
 
-  constructor() { }
+  public carro: Carro = new Carro()
+  constructor( public _carrosService: CarroService ) {
+    
+   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  cadastrarCarro(){
+    this._carrosService.cadastrar(this.carro).subscribe(res => {
+      console.log(res);
+      
+    })  
   }
 
 }

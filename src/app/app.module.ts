@@ -24,6 +24,7 @@ import { ErrosGlobais } from 'src/shared/ErrosGlobais';
     AppRoutingModule,
     HttpClientModule
   ],
+  
   providers: [
     StatusBar,
     SplashScreen,
