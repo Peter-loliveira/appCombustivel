@@ -41,7 +41,6 @@ export class LoginPage implements OnInit {
       this._route.navigate(['/lista-carros']);
       console.log(res)
     });
-
   }
 
   fazerCadastro() {
