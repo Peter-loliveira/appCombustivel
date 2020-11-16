@@ -6,4 +6,5 @@ export interface IUsuarioService {
     atualizar(usuario: Usuario) : Observable<Usuario>;
     logar(usuario: Usuario) : void;
     retornarUsuarioLogado() : Usuario;
+    logout(): void;
 }
