@@ -27,7 +27,10 @@ export class CadastrarUsuarioPage implements OnInit {
 
   criarUsuario() {
     console.log(this.usuario);
-    this._usuarioService.cadastrar(this.usuario);
+    this._usuarioService.cadastrar(this.usuario).subscribe( (res) => {
+      console.log(res);
+      
+    });
   }
 
 }
