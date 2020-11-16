@@ -14,7 +14,8 @@ export class ListaCarrosPage implements OnInit {
 
   constructor(
     private _route: Router,
-    private _carroService: CarroService
+    private _carroService: CarroService,
+
   ) { 
     this.obterCarros();
   }
