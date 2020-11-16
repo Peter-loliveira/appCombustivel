@@ -9,10 +9,14 @@ import { Global } from 'src/shared/Global';
 })
 export class UsuarioService implements IUsuarioService {
     
-    public apiUrl: string = Global.ApiUrl+"usuarios";
+    public apiUrl: string = `${Global.ApiUrl}usuarios`;
 
     constructor (private _httpClient: HttpClient) {
        
+    }
+    buscarUsuario(): Observable<Usuario> {
+        const usuario: Usuario = this.retornarUsuarioLogado();
+        return this._httpClient.get<Usuario>(`${this.apiUrl}/${usuario.id}`);
     }
     
     cadastrar(usuario: Usuario): Observable<Usuario> {

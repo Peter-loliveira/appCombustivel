@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
   logout() {
     // Limpar Local Storage
     this._usuarioService.logout();
+    
 
     // Bloquear arraste do Menu
     this._menu.swipeGesture(false);

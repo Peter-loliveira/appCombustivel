@@ -13,14 +13,15 @@ import { Global } from 'src/shared/Global';
 export class CarroService implements ICarroService {
 
     public apiUrl: string = Global.ApiUrl + "carros";
-    private _usuarioLogado: Usuario = new Usuario()
+    private _usuarioLogado: Usuario = new Usuario();
+    public carros: Carro[] = [];
 
     constructor( 
-        private _usuarioServices: 
+        private _usuarioService: 
         UsuarioService, 
         private _http: HttpClient ) {
 
-        this._usuarioLogado = this._usuarioServices.retornarUsuarioLogado()
+        this._usuarioLogado = this._usuarioService.retornarUsuarioLogado()
 
     }
 
@@ -42,9 +43,20 @@ export class CarroService implements ICarroService {
     editar(carro: Carro): Observable<Carro> {
         throw new Error("Method not implemented.");
     }
-    listar(): Observable<Carro[]> {
-        throw new Error("Method not implemented.");
+
+    listar(): Promise<Carro[]> {
+        const promise = new Promise<Carro[]>(async (resolve, reject) => {
+            try { 
+                const usuario = await this._usuarioService.buscarUsuario().toPromise();
+                resolve(usuario.carros);    
+
+            } catch(e) {
+               reject(e); 
+            }
+        });
+        return promise;
     }
+
     buscar(carro_id: number): Observable<Carro> {
         throw new Error("Method not implemented.");
     }
