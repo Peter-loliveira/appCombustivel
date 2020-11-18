@@ -20,7 +20,9 @@ import { ErrosGlobais } from 'src/shared/ErrosGlobais';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot( { 
+      swipeBackEnabled: false //Desabilita a opção de ARRATAR para  o lado e voltar para a página anterior
+    } ),
     AppRoutingModule,
     HttpClientModule
   ],
