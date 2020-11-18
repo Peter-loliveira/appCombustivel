@@ -48,6 +48,7 @@ export class CarroService implements ICarroService {
         const promise = new Promise<Carro[]>(async (resolve, reject) => {
             try { 
                 const usuario = await this._usuarioService.buscarUsuario().toPromise();
+                this.carros = usuario.carros;
                 resolve(usuario.carros);    
 
             } catch(e) {
