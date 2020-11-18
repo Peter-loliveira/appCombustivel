@@ -15,7 +15,6 @@ export class ListaCarrosPage implements OnInit {
   constructor(
     private _route: Router,
     private _carroService: CarroService,
-
   ) { 
     this.obterCarros();
   }
@@ -31,6 +30,10 @@ export class ListaCarrosPage implements OnInit {
 
 cadastrarCarro(){
   this._route.navigate(['/cadastrar-carro'])
+}
+
+visualizarCarro(carro_id: Number) {
+  this._route.navigate([`/carro/${carro_id}`]);
 }
 
 }
