@@ -33,10 +33,10 @@ export class AppComponent implements OnInit {
     {
       title: "Calcular Litros",
       url: "/calcular-litros",
-      icon: "calculator",
+      icon: "speedometer",
     },
   ];
-  public labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
+  // public labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
 
   constructor(
     private platform: Platform,
