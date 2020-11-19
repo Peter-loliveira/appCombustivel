@@ -29,9 +29,9 @@ export class CarroPage implements OnInit {
   ngOnInit() {}
 
   obterCarro() {
-    const carroEncntrado = this.ListaCarros.find((c) => c.id === this.carro_id);
-    if (carroEncntrado) {
-      this.carro = carroEncntrado;
+    const carroEncontrado = this.ListaCarros.find((c) => c.id === this.carro_id);
+    if (carroEncontrado) {
+      this.carro = carroEncontrado;
     } else {
       this._nav.navigate(["/lista-carros"]);
     }
