@@ -1,6 +1,6 @@
 import { CarroService } from 'src/services/CarroService';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Carro } from 'src/models/Carro';
 
 @Component({
@@ -8,7 +8,7 @@ import { Carro } from 'src/models/Carro';
   templateUrl: './lista-carros.page.html',
   styleUrls: ['./lista-carros.page.scss'],
 })
-export class ListaCarrosPage implements OnInit {
+export class ListaCarrosPage implements OnInit, OnDestroy {
 
   public carros: Carro[] = new Array<Carro>()
 
@@ -16,10 +16,18 @@ export class ListaCarrosPage implements OnInit {
     private _route: Router,
     private _carroService: CarroService,
   ) { 
-    this.obterCarros();
   }
-
+  
+  ngOnDestroy(): void {
+    console.log('A página limpou a lista d Carros!');
+    this.carros = [];
+  }
+  
   ngOnInit() {
+  }
+  
+  ionViewDidEnter() {
+    this.obterCarros();
   }
 
   async obterCarros() {

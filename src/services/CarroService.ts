@@ -45,6 +45,7 @@ export class CarroService implements ICarroService {
     }
 
     listar(): Promise<Carro[]> {
+        this.carros = [];
         const promise = new Promise<Carro[]>(async (resolve, reject) => {
             try { 
                 const usuario = await this._usuarioService.buscarUsuario().toPromise();
@@ -62,7 +63,23 @@ export class CarroService implements ICarroService {
         throw new Error("Method not implemented.");
     }
     calcularLitros(carro: Carro, tipoCombustivel: number, distancia: number): number {
-        throw new Error("Method not implemented.");
+        let resultado: number = 0;
+
+        if(!carro) throw new Error('Escolha um carro');
+        if(!distancia) throw new Error('Digite a distancia a ser percorrida.');
+
+        let valorCombustivel: number = 0;
+
+        if (tipoCombustivel == 1) {
+            valorCombustivel = carro.consumoGasolina;
+        } else {
+            valorCombustivel = carro.consumoAlcool;
+        }
+        resultado = distancia / valorCombustivel;
+
+        resultado = parseFloat(resultado.toFixed(2));
+
+        return resultado;
     }
 
 }

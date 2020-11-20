@@ -10,7 +10,6 @@
 <ion-content>
 
   <ion-list>
-
     <ion-item>
       <ion-label>Carro</ion-label>
       <ion-select okText="OK" cancelText="Cancelar" placeholder="Selecione um carro" [(ngModel)]='carro_id'>
@@ -33,14 +32,10 @@
 
     <ion-button expand='full' Mode='ios' (click)='fazerCalculoLitros()'>Calcular Litros</ion-button>
 
-    <ion-grid *ngIf='totalLitros > 0'>
-  
-        <ion-label>Serão necessário {{ totalLitros }} litros </ion-label>
-
+    <ion-grid *ngIf='quantidadeLitros > 0'>
+        <ion-label>Serão necessário {{ quantidadeLitros }} litros </ion-label>
         <ion-label>para percorrer a distância.</ion-label>
-
     </ion-grid>
-
   </ion-list>
 
 </ion-content>
