@@ -41,7 +41,10 @@ export class ErrosGlobais implements ErrorHandler {
       this.htmlLoading = <HTMLIonLoadingElement>(
         document.getElementById("custon-loading")
       );
-      this.htmlLoading.dismiss();
+      if(this.htmlLoading){
+
+        this.htmlLoading.dismiss();
+      }
     //   console.log(this.htmlLoading);
     }, 500);
   }

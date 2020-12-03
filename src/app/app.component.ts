@@ -1,5 +1,5 @@
 import { Usuario } from "./../models/Usuario";
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
 import { UsuarioService } from "src/services/UsuarioService";
 import { Component, OnInit } from "@angular/core";
 
@@ -36,7 +36,9 @@ export class AppComponent implements OnInit {
       icon: "speedometer",
     },
   ];
-  // public labels = ["Family", "Friends", "Notes", "Work", "Travel", "Reminders"];
+
+
+  public usuario: Usuario = new Usuario();
 
   constructor(
     private platform: Platform,
@@ -47,6 +49,7 @@ export class AppComponent implements OnInit {
     private _router: Router // Usado para podermos usar as rotas e direcionar para determinada página
   ) {
     this.initializeApp();
+    this.acompanharRota();
   }
 
   initializeApp() {
@@ -63,6 +66,28 @@ export class AppComponent implements OnInit {
         (page) => page.title.toLowerCase() === path.toLowerCase()
       );
     }
+  }
+
+  ionViewDidEnter() {
+    this.pegarUsuarioLogado();
+  }
+
+  pegarUsuarioLogado(){
+    const usuarioEncontrado: Usuario = this._usuarioService.retornarUsuarioLogado();
+    if(usuarioEncontrado) {
+      this.usuario = usuarioEncontrado;
+    }
+  }
+
+  acompanharRota(){
+    this._router.events.subscribe(res => {
+      if( res instanceof NavigationEnd) {
+        console.log(res);
+        this.pegarUsuarioLogado();
+        
+      }
+      
+    });
   }
 
   logout() {
